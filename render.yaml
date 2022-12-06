@@ -1,0 +1,18 @@
+databases:
+  - name: instaclone
+    databaseName: instaclone
+    user: instaclone
+
+services:
+  - type: web
+    name: instaclone
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: instaclone
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
