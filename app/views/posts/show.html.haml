@@ -5,7 +5,7 @@
         = @post.user.user_name
     .image.center-block
       - if @post.image.attached?
-        =image_tag @post.image.variant(resize_to_limit: [500, 500])
+        =image_tag rails_blob_url(@post.image.variant(resize_to_limit: [500, 500]), disposition: "attachment"))
     %p.caption
       =@post.caption
     .text-center
