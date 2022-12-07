@@ -4,7 +4,7 @@
       .name
         = @post.user.user_name
     .image.center-block
-      - @post.image.present?
+      - if @post.image.present?
         =image_tag @post.image.variant(resize_to_limit: [500, 500])
     %p.caption
       =@post.caption
